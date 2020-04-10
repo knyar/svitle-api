@@ -29,7 +29,7 @@ class Station:
 @dataclass_json
 @dataclass
 class V2StatusAPIResponse:
-    """/api/v2/status API response."""
+    """/v2/status API response."""
     stations: Dict[str, Station]
 
 @dataclass_json

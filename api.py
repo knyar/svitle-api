@@ -28,4 +28,4 @@ class V2Status(Resource):
 
 
 api = Api()
-api.add_resource(V2Status, '/api/v2/status')
+api.add_resource(V2Status, '/v2/status')
