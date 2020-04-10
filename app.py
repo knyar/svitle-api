@@ -22,7 +22,7 @@ def create_app(debug=False):
 
     app.sv_store = Store(os.environ.get('REDIS_URL'))
 
-    if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+    if not debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
         app.sv_fetcher = Fetcher(app.sv_store)
         REGISTRY.register(app.sv_fetcher)
 
