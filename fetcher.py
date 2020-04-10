@@ -78,7 +78,6 @@ class Fetcher(object):
         l = GaugeMetricFamily(
             'svitlelistener_count', 'Number of listeners', labels=['type'])
         for name, count in self.listener_counts.items():
-            logging.info("Count for %s: %d", name, count)
             l.add_metric([name], count)
         yield l
 
