@@ -22,7 +22,9 @@ class V2Status(Resource):
                     ))
 
         resp = models.V2StatusAPIResponse(stations=stations)
-        return Response(resp.to_json(), 200, mimetype='application/json')
+        return Response(
+            resp.to_json(), 200, mimetype='application/json',
+            headers={'Access-Control-Allow-Origin': '*'})
 
 
 api = Api()
