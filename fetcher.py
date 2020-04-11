@@ -32,11 +32,14 @@ class Fetcher(object):
     def _run(self):
         """Background refresh function that runs in a loop."""
         while True:
-            sources = _fetch_sources() 
-            logging.debug("Fetched %d sources", len(sources))
-            self._process_sources(sources)
-            logging.debug("Stations: %s", self.stations)
-            logging.debug("Listener counts: %s", self.listener_counts)
+            try:
+                sources = _fetch_sources() 
+                logging.debug("Fetched %d sources", len(sources))
+                self._process_sources(sources)
+                logging.debug("Stations: %s", self.stations)
+                logging.debug("Listener counts: %s", self.listener_counts)
+            except Exception as e:
+                logging.error("Fetcher error: %s", e)
             time.sleep(1)
 
     def _process_sources(self, sources: Dict[str, object]):
@@ -44,7 +47,10 @@ class Fetcher(object):
         stations = {}
         listener_counts = {}
         for name, source in sources.items():
-            listener_counts[name] = int(source['listeners'])
+            if 'listeners' in source:
+                listener_counts[name] = int(source['listeners'])
+            else:
+                logging.error("Expected 'listeners' field; got %s", source)
             station = self.stream_to_station(name)
             if not station or station in stations:
                 continue
@@ -125,7 +131,7 @@ def _fetch_sources() -> Dict[str, object]:
         data = json.loads(r.text)
         sources = data['icestats']['source']
     except Exception as e:
-        logging.error("Error while fetching sources: %s", e)
+        logging.error("Error while fetching sources: %s; got %s", e, r.text)
         return {}
     if not isinstance(sources, list):
         sources = [sources]
