@@ -54,11 +54,14 @@ class Fetcher(object):
             stream_info = _parse_stream_info(name, source)
             stations[station] = stream_info
 
-            if ((station not in self.stations) or
-                    (self.stations[station].current_track !=
-                     stream_info.current_track)):
-                logging.debug("Adding new stream information for %s", station)
-                self._store.add_stream_info(station, stream_info)
+            if ((station in self.stations) and
+                    (self.stations[station].current_track ==
+                    stream_info.current_track)):
+                continue
+            if stream_info.current_track == '':
+                continue
+            logging.debug("Adding new stream information for %s", station)
+            self._store.add_stream_info(station, stream_info)
         self.stations = stations
         self.listener_counts = listener_counts
 
