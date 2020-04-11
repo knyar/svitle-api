@@ -47,10 +47,7 @@ class Fetcher(object):
         stations = {}
         listener_counts = {}
         for name, source in sources.items():
-            if 'listeners' in source:
-                listener_counts[name] = int(source['listeners'])
-            else:
-                logging.error("Expected 'listeners' field; got %s", source)
+            listener_counts[name] = int(source.get('listeners', 0))
             station = self.stream_to_station(name)
             if not station or station in stations:
                 continue
