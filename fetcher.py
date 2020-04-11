@@ -10,7 +10,7 @@ from prometheus_client.core import GaugeMetricFamily
 import config
 import models
 
-_SEPARATOR = '=\x9bNext=\x9b'
+_SEPARATOR = r'=›Next=›'
 
 class Fetcher(object):
     def __init__(self, store):
@@ -100,16 +100,7 @@ def _parse_stream_info(name: str, source: object) -> models.StreamInfo:
     title = title.replace('?UNKNOWN?', '')
 
     # A separator might be used to separate current and next tracks.
-    # It's always in Unicode, so we split before trying to convert from
-    # cp1251.
     parts = title.split(_SEPARATOR)
-
-    try:
-        # Attempt converting the string from cp1251.
-        parts = [p.encode('cp1252').decode('cp1251') for p in parts]
-    except UnicodeEncodeError:
-        # The conversion will fail if the string is already in unicode.
-        pass
 
     return models.StreamInfo(
         current_track=_strip(parts[0]),
