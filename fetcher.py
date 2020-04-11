@@ -33,6 +33,7 @@ class Fetcher(object):
         """Background refresh function that runs in a loop."""
         while True:
             sources = _fetch_sources() 
+            logging.debug("Fetched %d sources", len(sources))
             self._process_sources(sources)
             logging.debug("Stations: %s", self.stations)
             logging.debug("Listener counts: %s", self.listener_counts)
@@ -53,6 +54,7 @@ class Fetcher(object):
             if ((station not in self.stations) or
                     (self.stations[station].current_track !=
                      stream_info.current_track)):
+                logging.debug("Adding new stream information for %s", station)
                 self._store.add_stream_info(station, stream_info)
         self.stations = stations
         self.listener_counts = listener_counts
