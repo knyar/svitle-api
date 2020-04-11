@@ -11,6 +11,8 @@ class Store:
     def __init__(self, redis_url, keep_last=10):
         logging.info("Connecting to redis at %s", redis_url)
         self._redis = Redis(
+            socket_timeout=5, socket_connect_timeout=5,
+            health_check_interval=2,
             connection_pool=BlockingConnectionPool.from_url(redis_url))
         self._last_id = keep_last-1
 

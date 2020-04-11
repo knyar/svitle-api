@@ -30,7 +30,7 @@ def create_app(debug=False):
         '/metrics': make_wsgi_app(),
     })
 
-    if debug:
+    if debug or os.environ.get('DEBUG_LOGGING'):
         logging.getLogger().setLevel(logging.DEBUG)
 
     return app
