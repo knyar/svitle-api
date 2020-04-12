@@ -119,7 +119,12 @@ def _fetch_sources() -> Dict[str, object]:
     """
     try:
         r = requests.get(config.icecast_url, timeout=10)
-        data = json.loads(r.text)
+
+        # Sometimes icecast2 returnes invalid JSON when the title is empty :(
+        # The fix is in master but the released version (2.4.4) does not
+        # include it yet. https://trac.xiph.org/ticket/2198
+        text = r.text.replace('"title": - ,', '"title": "",')
+        data = json.loads(text)
         sources = data['icestats']['source']
     except Exception as e:
         logging.error("Error while fetching sources: %s; got %s", e, r.text)
