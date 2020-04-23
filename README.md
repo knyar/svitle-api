@@ -31,7 +31,6 @@ Install dependencies:
 ```bash
 pip install pipenv
 pipenv install
-pipenv run python app.py
 ```
 
 Start redis:
