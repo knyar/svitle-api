@@ -34,6 +34,15 @@ class V2StatusAPIResponse:
 
 @dataclass_json
 @dataclass
+class V1StatusAPIResponse:
+    """/v1/status API response."""
+    stream_url: str
+    flags: str
+    current: str = ''
+    next: str = ''
+
+@dataclass_json
+@dataclass
 class StreamInfo:
     """Internal representation of a point-in-time stream information."""
     current_track: str

@@ -48,5 +48,21 @@ class V2Status(Resource):
             headers={'Access-Control-Allow-Origin': '*'})
 
 
+class V1Status(Resource):
+    """Request handler for /v1/status.
+
+    Returns a response message in models.V1StatusAPIResponse
+    """
+    def get(self):
+        response = copy.deepcopy(config.v1_response)
+        svitle = app.sv_fetcher.stations['svitle']
+        response.current = svitle.current_track
+        response.next = svitle.next_track
+        return Response(
+            response.to_json(), 200, mimetype='application/json',
+            headers={'Access-Control-Allow-Origin': '*'})
+
+
 api = Api()
 api.add_resource(V2Status, '/v2/status')
+api.add_resource(V1Status, '/v1/status')

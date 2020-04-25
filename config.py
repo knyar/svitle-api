@@ -34,3 +34,9 @@ stations = {
         ]
     ),
 }
+
+v1_response = models.V1StatusAPIResponse(
+    stream_url='http://online.svitle.org:6728/sre',  # 64Kbit/s mono'
+    # http://online.svitle.org:6728/fm',  # 128Kbit/s stereo
+    flags='redirect-obsolete',
+)
