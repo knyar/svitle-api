@@ -14,9 +14,9 @@ stations = {
     'svitle': models.Station(
         streams=[
             models.Stream(name='normal',
-                            url='https://online.svitle.org/sre'),
-            models.Stream(name='low',
                             url='https://online.svitle.org/fm'),
+            models.Stream(name='low',
+                            url='https://online.svitle.org/sre'),
         ]
     ),
     'svetloe': models.Station(
