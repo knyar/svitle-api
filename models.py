@@ -48,3 +48,36 @@ class StreamInfo:
     current_track: str
     next_track: str = ''
     time: datetime = field(default_factory=datetime.now)
+
+# Preferences API
+
+@dataclass_json
+@dataclass
+class StationConfig:
+    """API response: a single station information."""
+    id: str
+    name: str
+    logo: str
+
+@dataclass_json
+@dataclass
+class Link:
+    text: str
+    url: str
+
+@dataclass_json
+@dataclass
+class ContactBlock:
+    title: str
+    icon_links: List[Link] = field(default_factory=list)
+    text_links: List[Link] = field(default_factory=list)
+
+@dataclass_json
+@dataclass
+class V2PreferencesAPIResponse:
+    """/v2/preferences API response."""
+    url_support: str
+    url_archive: str
+    url_youtube: str
+    stations: List[StationConfig] = field(default_factory=list)
+    contacts: List[ContactBlock] = field(default_factory=list)
