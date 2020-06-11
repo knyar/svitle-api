@@ -13,24 +13,32 @@ redis_key_prefix = 'svitle'
 stations = {
     'svitle': models.Station(
         streams=[
-            models.Stream(name='normal',
-                            url='https://online.svitle.org/fm'),
-            models.Stream(name='low',
-                            url='https://online.svitle.org/sre'),
+            models.Stream(
+                name='default',
+                url='https://online.svitle.org/hls/svitle/default.m3u8'),
+            models.Stream(
+                name='low',
+                url='https://online.svitle.org/hls/svitle/low.m3u8'),
         ]
     ),
     'svetloe': models.Station(
         streams=[
             models.Stream(
-                name='normal',
-                url='https://online.svitle.org/svetloe.128.mp3'),
+                name='default',
+                url='https://online.svitle.org/hls/svetloe/default.m3u8'),
+            models.Stream(
+                name='low',
+                url='https://online.svitle.org/hls/svetloe/low.m3u8'),
         ]
     ),
     'kids': models.Station(
         streams=[
             models.Stream(
-                name='normal',
-                url='https://online.svitle.org/kids.128.mp3'),
+                name='default',
+                url='https://online.svitle.org/hls/kids/default.m3u8'),
+            models.Stream(
+                name='low',
+                url='https://online.svitle.org/hls/kids/low.m3u8'),
         ]
     ),
 }
@@ -41,11 +49,11 @@ v1_response = models.V1StatusAPIResponse(
     flags='redirect-obsolete',
 )
 
-preferences_response = models.V2PreferencesAPIResponse(
+preferences_svetloe_response = models.V2PreferencesAPIResponse(
     stations=[
         models.StationConfig(id='svetloe', name='Светлое Радио', logo='svetloe'),
         models.StationConfig(id='svitle', name='Світле Радіо Еммануїл', logo='svitle'),
-        models.StationConfig(id='kids', name='Дитяче Світле Радіо', logo='svitle'),
+        models.StationConfig(id='kids', name='Дитяче Світле Радіо', logo='kids'),
     ],
     url_support='https://svitle.org/ru/partnjorstvo/bankovskie-rekvizity',
     url_archive='https://media.svitle.org/',

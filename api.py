@@ -48,14 +48,15 @@ class V2Status(Resource):
             headers={'Access-Control-Allow-Origin': '*'})
 
 
-class V2Preferences(Resource):
-    """Request handler for /v2/preferences.
+class V2PreferencesSvetloe(Resource):
+    """Request handler for /v2/preferences.svetloe
 
     Returns a response message in models.V2PreferencesResponse
     """
     def get(self):
         return Response(
-            config.preferences_response.to_json(), 200, mimetype='application/json',
+            config.preferences_svetloe_response.to_json(),
+            200, mimetype='application/json',
             headers={'Access-Control-Allow-Origin': '*'})
 
 
@@ -76,5 +77,5 @@ class V1Status(Resource):
 
 api = Api()
 api.add_resource(V2Status, '/v2/status')
-api.add_resource(V2Preferences, '/v2/preferences')
+api.add_resource(V2PreferencesSvetloe, '/v2/preferences.svetloe')
 api.add_resource(V1Status, '/v1/status')
