@@ -54,11 +54,10 @@ class V2Preferences(Resource):
     Returns a response message in models.V2PreferencesResponse
     """
     def get(self, station):
-        response = copy.deepcopy(config.preferences_response)
-        if station == 'svitle':
-            response.contacts[0].title = 'Прямий ефір'
-            response.contacts[1].title = 'Редакція'
-            response.contacts[2].title = 'Бухгалтерія'
+        if station == 'svetloe':
+            response = copy.deepcopy(config.preferences_svetloe_response)
+        else:
+            response = copy.deepcopy(config.preferences_svitle_response)
         return Response(
             response.to_json(), 200, mimetype='application/json',
             headers={'Access-Control-Allow-Origin': '*'})
