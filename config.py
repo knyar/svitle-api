@@ -49,7 +49,7 @@ v1_response = models.V1StatusAPIResponse(
     flags='redirect-obsolete',
 )
 
-preferences_svetloe_response = models.V2PreferencesAPIResponse(
+preferences_response = models.V2PreferencesAPIResponse(
     stations=[
         models.StationConfig(id='svetloe', name='Светлое Радио', logo='svetloe'),
         models.StationConfig(id='svitle', name='Світле Радіо Еммануїл', logo='svitle'),
