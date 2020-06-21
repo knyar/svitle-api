@@ -66,9 +66,9 @@ preferences_svetloe_response = models.V2PreferencesAPIResponse(
                 models.Link(text='viber', url='viber://chat?number=+380935584412'),
             ],
             text_links=[
-                models.Link(text='+38 (044) 383-67-28', url='tel:+380443836728'),
                 models.Link(text='+38 (067) 123-75-75', url='tel:+380671237575'),
                 models.Link(text='+38 (094) 928-37-28', url='tel:+380949283728'),
+                models.Link(text='facebook.com/svitleradio', url='https://www.facebook.com/svitleradio'),
             ],
         ),
         models.ContactBlock(
@@ -81,7 +81,6 @@ preferences_svetloe_response = models.V2PreferencesAPIResponse(
         models.ContactBlock(
             title='Бухгалтерия',
             text_links=[
-                models.Link(text='+38 (044) 222-67-28', url='tel:+380442226728'),
                 models.Link(text='+38 (099) 207-58-22', url='tel:+380992075822'),
             ],
         ),
@@ -105,9 +104,9 @@ preferences_svitle_response = models.V2PreferencesAPIResponse(
                 models.Link(text='viber', url='viber://chat?number=+380935584412'),
             ],
             text_links=[
-                models.Link(text='+38 (044) 383-67-28', url='tel:+380443836728'),
                 models.Link(text='+38 (067) 123-75-75', url='tel:+380671237575'),
                 models.Link(text='+38 (094) 928-37-28', url='tel:+380949283728'),
+                models.Link(text='facebook.com/svitleradio', url='https://www.facebook.com/svitleradio'),
             ],
         ),
         models.ContactBlock(
@@ -120,7 +119,6 @@ preferences_svitle_response = models.V2PreferencesAPIResponse(
         models.ContactBlock(
             title='Бухгалтерія',
             text_links=[
-                models.Link(text='+38 (044) 222-67-28', url='tel:+380442226728'),
                 models.Link(text='+38 (099) 207-58-22', url='tel:+380992075822'),
             ],
         ),
