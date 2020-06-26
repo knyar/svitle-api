@@ -49,44 +49,6 @@ v1_response = models.V1StatusAPIResponse(
     flags='redirect-obsolete',
 )
 
-preferences_svetloe_response = models.V2PreferencesAPIResponse(
-    stations=[
-        models.StationConfig(id='svetloe', name='Светлое Радио', logo='svetloe'),
-        models.StationConfig(id='svitle', name='Світле Радіо Еммануїл', logo='svitle'),
-        models.StationConfig(id='kids', name='Дитяче Світле Радіо', logo='kids'),
-    ],
-    url_support='https://svitle.org/ru/partnjorstvo/bankovskie-rekvizity',
-    url_archive='https://media.svitle.org/',
-    url_youtube='https://www.youtube.com/c/svitleradioEmmanuel/live',
-    contacts=[
-        models.ContactBlock(
-            title='Прямой эфир',
-            icon_links=[
-                models.Link(text='skype', url='skype:svitleradio?chat'),
-                models.Link(text='viber', url='viber://chat?number=+380935584412'),
-            ],
-            text_links=[
-                models.Link(text='+38 (067) 123-75-75', url='tel:+380671237575'),
-                models.Link(text='+38 (094) 928-37-28', url='tel:+380949283728'),
-                models.Link(text='facebook.com/svitleradio', url='https://www.facebook.com/svitleradio'),
-            ],
-        ),
-        models.ContactBlock(
-            title='Редакция',
-            text_links=[
-                models.Link(text='+38 (044) 221-54-20', url='tel:+380442215420'),
-                models.Link(text='radio@svitle.org', url='mailto:radio@svitle.org'),
-            ],
-        ),
-        models.ContactBlock(
-            title='Бухгалтерия',
-            text_links=[
-                models.Link(text='+38 (099) 207-58-22', url='tel:+380992075822'),
-            ],
-        ),
-    ],
-)
-
 preferences_svitle_response = models.V2PreferencesAPIResponse(
     stations=[
         models.StationConfig(id='svitle', name='Світле Радіо Еммануїл', logo='svitle'),

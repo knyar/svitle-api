@@ -53,13 +53,9 @@ class V2Preferences(Resource):
 
     Returns a response message in models.V2PreferencesResponse
     """
-    def get(self, station):
-        if station == 'svetloe':
-            response = copy.deepcopy(config.preferences_svetloe_response)
-        else:
-            response = copy.deepcopy(config.preferences_svitle_response)
+    def get(self):
         return Response(
-            response.to_json(), 200, mimetype='application/json',
+            config.preferences_svitle_response.to_json(), 200, mimetype='application/json',
             headers={'Access-Control-Allow-Origin': '*'})
 
 
@@ -80,5 +76,5 @@ class V1Status(Resource):
 
 api = Api()
 api.add_resource(V2Status, '/v2/status')
-api.add_resource(V2Preferences, '/v2/preferences.<string:station>')
+api.add_resource(V2Preferences, '/v2/preferences.svitle')
 api.add_resource(V1Status, '/v1/status')
