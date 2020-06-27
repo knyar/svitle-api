@@ -51,9 +51,9 @@ v1_response = models.V1StatusAPIResponse(
 
 preferences_svitle_response = models.V2PreferencesAPIResponse(
     stations=[
-        models.StationConfig(id='svitle', name='Світле Радіо Еммануїл', logo='svitle'),
-        models.StationConfig(id='svetloe', name='Светлое Радио', logo='svetloe'),
-        models.StationConfig(id='kids', name='Дитяче Світле Радіо', logo='kids'),
+        models.StationConfig(id='svitle', name='Світле Радіо Еммануїл', logo='svitle', lang='ua'),
+        models.StationConfig(id='svetloe', name='Светлое Радио', logo='svetloe', lang='ru'),
+        models.StationConfig(id='kids', name='Дитяче Світле Радіо', logo='kids', lang='ua'),
     ],
     url_support='https://svitle.org/ru/partnjorstvo/bankovskie-rekvizity',
     url_archive='https://media.svitle.org/',

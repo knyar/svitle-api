@@ -58,6 +58,7 @@ class StationConfig:
     id: str
     name: str
     logo: str
+    lang: str
 
 @dataclass_json
 @dataclass
