@@ -66,9 +66,10 @@ class V1Status(Resource):
     """
     def get(self):
         response = copy.deepcopy(config.v1_response)
-        svitle = app.sv_fetcher.stations['svitle']
-        response.current = svitle.current_track
-        response.next = svitle.next_track
+        if 'svitle' in app.sv_fetcher.stations:
+            svitle = app.sv_fetcher.stations['svitle']
+            response.current = svitle.current_track
+            response.next = svitle.next_track
         return Response(
             response.to_json(), 200, mimetype='application/json',
             headers={'Access-Control-Allow-Origin': '*'})
