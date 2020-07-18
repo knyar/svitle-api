@@ -33,7 +33,7 @@ class Fetcher(object):
         """Background refresh function that runs in a loop."""
         while True:
             try:
-                sources = _fetch_sources() 
+                sources = _fetch_sources()
                 logging.debug("Fetched %d sources", len(sources))
                 self._process_sources(sources)
                 logging.debug("Stations: %s", self.stations)
@@ -110,25 +110,22 @@ def _parse_stream_info(name: str, source: object) -> models.StreamInfo:
 def _strip(input: str) -> str:
     """Strip whitespace and other junk characters."""
     return input.strip(" \t\n\r\0\x0B.,;-")
-   
+
 def _fetch_sources() -> Dict[str, object]:
     """Fetch sources currently active in icecast.
 
     Returns a dict with keys corresponding to normalized source
     names.
     """
-    try:
-        r = requests.get(config.icecast_url, timeout=10)
+    r = requests.get(config.icecast_url, timeout=10)
 
-        # Sometimes icecast2 returnes invalid JSON when the title is empty :(
-        # The fix is in master but the released version (2.4.4) does not
-        # include it yet. https://trac.xiph.org/ticket/2198
-        text = r.text.replace('"title": - ,', '"title": "",')
-        data = json.loads(text)
-        sources = data['icestats']['source']
-    except Exception as e:
-        logging.error("Error while fetching sources: %s; got %s", e, r.text)
-        return {}
+    # Sometimes icecast2 returnes invalid JSON when the title is empty :(
+    # The fix is in master but the released version (2.4.4) does not
+    # include it yet. https://trac.xiph.org/ticket/2198
+    text = r.text.replace('"title": - ,', '"title": "",')
+    data = json.loads(text)
+    sources = data['icestats']['source']
+
     if not isinstance(sources, list):
         sources = [sources]
 
