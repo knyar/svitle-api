@@ -78,6 +78,8 @@ class ContactBlock:
 class V2PreferencesAPIResponse:
     """/v2/preferences API response."""
     url_support: str
+    url_support_ua: str
+    url_support_ru: str
     url_archive: str
     url_youtube: str
     stations: List[StationConfig] = field(default_factory=list)
