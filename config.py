@@ -56,8 +56,10 @@ preferences_svitle_response = models.V2PreferencesAPIResponse(
         models.StationConfig(id='kids', name='Дитяче Світле Радіо', logo='kids', lang='ua'),
     ],
     url_support='https://svitle.org/ru/partnjorstvo',
-    url_support_ru='https://svitle.org/ru/partnjorstvo',
-    url_support_ua='https://svitle.org/partnerstvo',
+    url_support_i18n={
+        'ru': 'https://svitle.org/ru/partnjorstvo',
+        'ua': 'https://svitle.org/partnerstvo',
+    },
     url_archive='https://media.svitle.org/',
     url_youtube='https://www.youtube.com/c/svitleradioEmmanuel/live',
     contacts=[
