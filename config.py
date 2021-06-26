@@ -77,7 +77,7 @@ preferences_svitle_response = models.V2PreferencesAPIResponse(
             ],
             text_links=[
                 models.Link(text='+38 (067) 123-75-75', url='tel:+380671237575'),
-                models.Link(text='+38 (094) 928-37-28', url='tel:+380949283728'),
+                models.Link(text='+38 (044) 357-67-28', url='tel:+380443576728'),
                 models.Link(text='facebook.com/svitleradio', url='https://www.facebook.com/svitleradio'),
             ],
         ),
