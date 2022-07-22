@@ -94,11 +94,11 @@ preferences_svitle_response = models.V2PreferencesAPIResponse(
                 models.Link(text='+38 (099) 207-58-22', url='tel:+380992075822'),
             ],
         ),
-        models.ContactBlock(
-            title='contacts_screen.block.svetloe',
-            text_links=[
-                models.Link(text='svetloe.org', url='https://www.svetloe.org'),
-            ],
-        ),
+#        models.ContactBlock(
+#            title='contacts_screen.block.svetloe',
+#            text_links=[
+#                models.Link(text='svetloe.org', url='https://www.svetloe.org'),
+#            ],
+#        ),
     ],
 )
