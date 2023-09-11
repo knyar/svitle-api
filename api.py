@@ -4,7 +4,6 @@ from flask import current_app as app
 from flask import jsonify, request, Response
 from flask_restful import Api, Resource
 
-import logging
 import config
 import models
 
@@ -55,15 +54,8 @@ class V2Preferences(Resource):
     Returns a response message in models.V2PreferencesResponse
     """
     def get(self):
-        response = copy.deepcopy(config.preferences_svitle_response)
-        ua = request.headers.get('User-Agent')
-        # Only show on iOS or Android v. 2.2.
-        supported = ("iOS/" in ua) or ("Svitle/2.2" in ua)
-        if not supported:
-            response.url_support = ''
-            response.url_support_i18n = {}
         return Response(
-            response.to_json(), 200, mimetype='application/json',
+            config.preferences_svitle_response.to_json(), 200, mimetype='application/json',
             headers={'Access-Control-Allow-Origin': '*'})
 
 
